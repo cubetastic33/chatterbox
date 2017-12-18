@@ -10,5 +10,7 @@ var config = {
 firebase.initializeApp(config);
 
 $(document).ready(function() {
-  hideloader();
+  if ($('select').length) {
+    $('select').material_select();
+  }
 });
