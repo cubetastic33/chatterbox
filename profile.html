@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatterbox</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div id="loading" class="center-align">
+    <div class="preloader-wrapper big active">
+      <div class="spinner-layer spinner-blue">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-red">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-yellow">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+
+      <div class="spinner-layer spinner-green">
+        <div class="circle-clipper left">
+          <div class="circle"></div>
+        </div><div class="gap-patch">
+          <div class="circle"></div>
+        </div><div class="circle-clipper right">
+          <div class="circle"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="hidden" class="hide">
+    <header class="navbar-fixed">
+      <nav class="navbar-extended">
+        <div class="nav-wrapper">
+          <a href="index.html" id="websiteTitle" class="brand-logo center">Chatterbox</a>
+          <div id="loggedStatus" class="right"></div>
+        </div>
+      </nav>
+    </header>
+    <div id="division"></div>
+    <footer class="page-footer">
+      <h5 class="white-text">Chatterbox</h5>
+      <iframe src="https://ghbtns.com/github-btn.html?user=cubetastic33&repo=chatterbox&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170px" height="30px" class="right"></iframe>
+      <p class="grey-text text-lighten-4">Property of <a href="cubetastic33.github.io">cubetastic</a></p>
+      <div class="footer-copyright">
+        <div class="container">
+        © 2017 MIT Licence
+        </div>
+      </div>
+    </footer>
+  </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  function hideloader() {
+    $("#loading").hide();
+    $("#hidden").removeClass('hide');
+  }
+</script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="js/materialize.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+<script src="js/main.js"></script>
+<script src="js/loggedStatus.js"></script>
+</html>
