@@ -16,6 +16,10 @@ header nav {
   height: 4em;
 }
 
+#loading {
+  margin-top: 40vh;
+}
+
 #homeDiv {
   min-height: 65vh;
 }
