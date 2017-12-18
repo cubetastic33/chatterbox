@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatterbox</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div id="loading">
+    loading...
+  </div>
+  <div id="hidden" class="hide">
+    <header class="navbar-fixed">
+      <nav class="navbar-extended">
+        <div class="nav-wrapper">
+          <a href="#" data-activates="mobile-menu" class="button-collapse btn">
+            <i class="material-icons">menu</i>
+          </a>
+          <a href="index.html" id="websiteTitle" class="brand-logo center">Chatterbox</a>
+        </div>
+      </nav>
+    </header>
+    <div class="container">
+      <div class="row">
+          <div id="formHeading" class="black center col s8 offset-s2">Sign up</div>
+      </div>
+      <div class="row">
+        <form id="signUp" class="col s8 offset-s2 teal lighten-4">
+          <div class="row">
+            <div class="input-field col s11">
+              <i class="material-icons prefix">account_circle</i>
+              <input type="text" id="username" class="validate" autocomplete="off" required>
+              <label for="username" id="usernameLabel">Username</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s11">
+              <i class="material-icons prefix">email</i>
+              <input type="email" id="email" class="validate" autocomplete="off" required>
+              <label for="email" id="emailLabel">Email</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s6">
+              <input type="password" id="password" required>
+              <label for="password" id="passwordLabel">Password</label>
+            </div>
+            <div class="input-field col s6">
+              <input type="password" id="confPassword">
+              <label for="confPasswordLabel">Confirm Password</label>
+            </div>
+          </div>
+          <div class="row">
+            <button type="submit" id="btn" class="waves-effect btn indigo darken-3 indigo-text text-lighten-3 col s3 offset-s1">Sign up</button>
+          </div>
+          <div class="row">
+            <p class="col s11 offset-s1">
+              Already a member of Chatterbox? <a href="signin.html">Sign in</a> now!
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  function hideloader() {
+    $("#loading").hide();
+    $("#hidden").removeClass('hide');
+  }
+</script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="js/materialize.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+<script src="js/main.js"></script>
+<script src="js/loggedStatus.js"></script>
+</html>

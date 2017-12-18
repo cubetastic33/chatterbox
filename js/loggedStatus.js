@@ -33,8 +33,8 @@ firebase.auth().onAuthStateChanged(function(user) {
     });
   } else {
     // No user is signed in.
-    if (document.getElementById("loggedStatus").innerHTML == "") {
-      $("#loggedStatus").html('\
+    if ($('#loggedStatus').html() == '') {
+      $('#loggedStatus').html('\
         <ul class="logout">\
           <li>\
             <a href="signin.html">Sign in</a>\

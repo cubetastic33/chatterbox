@@ -20,24 +20,39 @@
             <i class="material-icons">menu</i>
           </a>
           <a href="index.html" id="websiteTitle" class="brand-logo center">Chatterbox</a>
-          <div id="loggedStatus" class="right"></div>
         </div>
       </nav>
     </header>
-    <div id="homeDiv">
-      <div id="signinreqmessage"></div>
-      <iframe src="chatdiv.html" id="signinreq"></iframe>
-    </div>
-    <footer class="page-footer">
-      <h5 class="white-text">Chatterbox</h5>
-      <iframe src="https://ghbtns.com/github-btn.html?user=cubetastic33&repo=cubetastic33.github.io&type=star&count=true&size=large" frameborder="0" scrolling="0" width="170px" height="30px" class="right"></iframe>
-      <p class="grey-text text-lighten-4">Property of <a href="cubetastic33.github.io">cubetastic</a></p>
-      <div class="footer-copyright">
-        <div class="container">
-        © 2017 MIT Licence
-        </div>
+    <div class="container">
+      <div class="row">
+        <div id="formHeading" class="black white-text center col s8 offset-s2">Sign in</div>
       </div>
-    </footer>
+      <div class="row">
+        <form id="signIn" class="col s8 offset-s2 blue-grey lighten-3">
+          <div class="row">
+            <div class="input-field col s11">
+              <i class="material-icons prefix">account_circle</i>
+              <input type="text" id="username" class="validate" autocomplete="off" required>
+              <label for="username" id="usernameLabel">Username</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s11">
+              <input type="password" id="password" class="validate" required>
+              <label for="password" id="passwordLabel">Password</label>
+            </div>
+          </div>
+          <div class="row">
+              <button type="submit" class="waves-effect btn indigo darken-3 indigo-text text-lighten-3 col s3 offset-s1">Sign in</button>
+          </div>
+          <div class="row">
+            <p class="col s11 offset-s1">
+              Not a member of Chatterbox yet? <a href="signup.html">Sign up</a> now!
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

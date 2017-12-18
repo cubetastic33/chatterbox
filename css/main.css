@@ -1,0 +1,46 @@
+body {
+  background-color: #33cc80;
+}
+
+header nav {
+  background-color: #33cc10;
+}
+
+#websiteTitle {
+  font-size: 3em;
+}
+
+#loggedStatus {
+  border: 2px solid black;
+  border-radius: 5%;
+  height: 4em;
+}
+
+#homeDiv {
+  min-height: 65vh;
+}
+
+#homeDiv iframe {
+  height: 90vh;
+  margin: 0 25vw;
+  width: 50vw;
+}
+
+#formHeading {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size: 2em;
+  padding: 0.5em;
+}
+
+#signUp input:-webkit-autofill, #signIn input:-webkit-autofill,
+#signUp input:-webkit-autofill:hover, #signIn input:-webkit-autofill:hover,
+#signUp input:-webkit-autofill:focus, #signIn input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+#signUp, #signIn {
+  margin-top: -20px;
+  padding-top: 10px;
+}

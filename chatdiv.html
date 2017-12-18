@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title></title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Aldrich|Audiowide|Righteous|Viga">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+  <link rel="stylesheet" href="css/chat.css">
+</head>
+<body id="chat-holder">
+  <header class="navbar-fixed">
+    <nav class="navbar-extended grey darken-3">
+      <button class="btn blue darken-1 left" onclick="goBackToGroups()">
+        <i class="material-icons">arrow_back</i>
+      </button>
+      <h4 id="groupHeading" class="brand-logo truncate center"></h4>
+      <button class="btn blue darken-1 right" onclick="openGroupSettings()">
+        <i class="material-icons">settings</i>
+      </button>
+    </nav>
+  </header>
+  <div id="groupSettings">
+    <button onclick="addMemberForm()">Add member</button>
+    <button onclick="openGroupSettings()">Back</button>
+  </div>
+  <div id="newGroup" class="modal blue-grey">
+    <form class="modal-content container">
+      <div class="row">
+        <h4 class="white-text">Create new group</h4>
+      </div>
+      <div class="row">
+        <div class="input-field col s10">
+          <i class="material-icons prefix">group</i>
+          <input type="text" id="groupName" class="validate" placeholder="Group name" required>
+          <label for="groupName">Enter the name of the group you want create.</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s10">
+          <i class="material-icons prefix">account_circle</i>
+          <input type="text" id="groupMember" class="validate" placeholder="Username" required>
+          <label for="groupMember" id="groupMemberLabel">Username of 1 person in the group. Add others later.</label>
+        </div>
+      </div>
+      <div class="row modal-footer red">
+        <button type="submit" id="createGroup" class="btn blue darken-2">Create Group</button>
+        <button class="btn blue darken-2" onclick="closeNewGroupForm()">Back</button>
+      </div>
+    </form>
+  </div>
+  <form id="addMember"></form>
+  <form id="addImage"></form>
+  <div id="insideGroup">
+    <div class="textWrapper">
+      <div id="messages" class="container"></div>
+    </div>
+  </div>
+  <button id="newGroupBtn" class="btn red" onclick="newGroup()">
+    <i class="material-icons">add</i>
+  </button>
+  <div id="groupOption"></div>
+  <footer class="blue darken-4">
+    <div class="input-field">
+      <input type="text" id="chatMessage" placeholder="Enter your message here...">
+      <i class="material-icons" onclick="initializeMessage()" style="cursor: pointer">send</i>
+      <i class="material-icons" onclick="addImageToChat()" style="cursor: pointer">insert_photo</i>
+    </div>
+  </footer>
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/materialize.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
+<script src="js/main.js"></script>
+<script src="js/chat.js"></script>
+</html>
