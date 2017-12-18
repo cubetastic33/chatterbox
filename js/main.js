@@ -45,6 +45,7 @@ function signUpUser(e) {
         var profilePic = storage.ref("profile-pics/defaultProfilePic.png");
         profilePic.getDownloadURL().then(function(url) {
           db.ref('users/'+uid).child('profilePic').set(url);
+          window.location.href = "index.html";
         });
       });
     }
