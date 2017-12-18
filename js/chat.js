@@ -40,21 +40,23 @@ function groupExists(groupName) {
 function memberExists(memberName) {
   var memberExists;
   var myUsername = db.ref('users/'+localStorage.getItem('currentUser')+'/username');
-  myUsername.on('value', function(data) {myUsername = data.val();});
-  var ref = db.ref('users').orderByChild('username').equalTo(memberName);
-  ref.on('child_added', function(snapshot) {
-    var usersdata = snapshot.val();
-    if (usersdata.username != myUsername) {
-      $('#groupMember').attr('class', 'invalid');
-      $('#groupMemberLabel').attr('data-error', 'You can\'t create a group with only yourself');
-    } else if (usersdata.username == memberName) {
-      $('#groupMember').attr('class', 'valid');
-      $('#groupMemberLabel').attr('data-success', usersdata.username+" exists.");
-      memberExists = true;
-    } else {
-      $('#groupMember').attr('class', 'invalid');
-      $('#groupMemberLabel').attr('data-error', 'No such user exists.');
-    }
+  myUsername.on('value', function(data) {
+    myUsername = data.val();
+    var ref = db.ref('users').orderByChild('username').equalTo(memberName);
+    ref.on('child_added', function(snapshot) {
+      var usersdata = snapshot.val();
+      if (usersdata.username == myUsername) {
+        $('#groupMember').attr('class', 'invalid');
+        $('#groupMemberLabel').attr('data-error', 'You can\'t create a group with only yourself');
+      } else if (usersdata.username == memberName) {
+        $('#groupMember').attr('class', 'valid');
+        $('#groupMemberLabel').attr('data-success', usersdata.username+" exists.");
+        memberExists = true;
+      } else {
+        $('#groupMember').attr('class', 'invalid');
+        $('#groupMemberLabel').attr('data-error', 'No such user exists.');
+      }
+    });
   });
 }
 
