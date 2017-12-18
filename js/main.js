@@ -19,8 +19,11 @@ var db = firebase.database();
 var storage = firebase.storage();
 
 $('#signUp').submit(signUpUser);
-//$('#signIn').submit(signInUser);
+$('#signIn').submit(signInUser);
 
+$('#loggedStatus').hover(function() {
+  $('#loggedStatus ul li ul').toggle();
+});
 
 function signUpUser(e) {
   e.preventDefault();
@@ -53,4 +56,21 @@ function signUpUser(e) {
     $('#confPassword').attr('class', 'invalid');
     $('#confPasswordLabel').attr('data-error', 'The two passwords don\'t match!');
   }
+}
+
+function signInUser(e) {
+  e.preventDefault();
+  var username = $('#username').val();
+  var password = $('#password').val();
+  Materialize.toast('Please wait...', 10000);
+  var usersRef = db.ref('users').orderByChild('username').equalTo(username);
+  usersRef.once('child_added', function(snapshot) {
+    if (password === snapshot.child('password').val()) {
+      alert(snapshot.key);
+      localStorage.setItem('currentUser', snapshot.key);
+      window.location.href = "index.html";
+    }
+  }, function (errorObject) {
+    console.log("The read failed: " + errorObject.code);
+  });
 }

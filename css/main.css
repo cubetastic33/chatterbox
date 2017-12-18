@@ -16,6 +16,16 @@ header nav {
   height: 4em;
 }
 
+#loggedStatus img {
+  border: 2px solid yellow;
+  border-radius: 100%;
+  width: 2em;
+}
+
+#loggedStatus ul li ul {
+  display: none;
+}
+
 #loading {
   margin-top: 40vh;
 }
@@ -26,7 +36,7 @@ header nav {
 
 #homeDiv iframe {
   height: 90vh;
-  margin: 0 25vw;
+  margin: 0 20vw;
   width: 50vw;
 }
 
