@@ -10,8 +10,8 @@ var config = {
 firebase.initializeApp(config);
 
 $(document).ready(function() {
-  if ($('select').length) {
-    $('select').material_select();
+  if ($('.modal').length) {
+    $('.modal').modal();
   }
 });
 
@@ -66,11 +66,15 @@ function signInUser(e) {
   var usersRef = db.ref('users').orderByChild('username').equalTo(username);
   usersRef.once('child_added', function(snapshot) {
     if (password === snapshot.child('password').val()) {
-      alert(snapshot.key);
       localStorage.setItem('currentUser', snapshot.key);
       window.location.href = "index.html";
     }
   }, function (errorObject) {
     console.log("The read failed: " + errorObject.code);
   });
+}
+
+function signOutUser() {
+  localStorage.setItem('currentUser', '');
+  window.location.href = "index.html";
 }

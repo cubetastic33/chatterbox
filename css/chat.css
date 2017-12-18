@@ -1,0 +1,84 @@
+body {
+  background-color: rgb(255, 212, 85);
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+#groupOption p {
+  cursor: pointer;
+  font-family: viga;
+}
+
+#groupHeading {
+  font-family: audiowide;
+  width: 60vw;
+}
+
+#groupSettings {
+	background-color: rgb(83, 70, 70);
+	display: none;
+	height: 40vh;
+	width: 100%;
+	transform: translateY(10vh);
+	padding: 1em;
+	position: fixed;
+	z-index: 11;
+}
+
+#insideGroup {
+	margin-top: 12vh;
+}
+
+.chatProfilePic {
+  width: 5vw;
+}
+
+#chatMessage {
+  width: 90vw;
+}
+
+xmp {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
+
+form input:-webkit-autofill,
+form input:-webkit-autofill:hover,
+form input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+#addMember {
+  display: none;
+  background-color: rgb(46, 193, 238);
+  border: 2px solid black;
+  height: 10vh;
+  width: 100%;
+  transform: translate(0, 35vw);
+  position: fixed;
+  z-index: 14;
+}
+
+#newMember {
+  width: 62vw;
+}
+
+#addImage {
+  display: none;
+  background-color: rgb(46, 193, 238);
+  border: 2px solid black;
+  height: 10vh;
+  width: 100%;
+  transform: translate(0, 35vw);
+  position: fixed;
+  z-index: 14;
+}
+
+footer {
+  z-index: 10;
+}
