@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Chatterbox</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="css/materialize.min.css" media="screen,projection"/>
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
   <div class="loading">
@@ -22,4 +25,15 @@
     </header>
   </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  function hideloader() {
+    $("#loading").hide();
+    $("#hidden").removeClass('hide');
+  }
+</script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<script src="js/materialize.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/4.6.1/firebase.js"></script>
+<script src="js/main.js"></script>
 </html>
