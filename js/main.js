@@ -42,13 +42,12 @@ function signUpUser(e) {
       db.ref('users').push().on('value', function(data) {
         var newUser = db.ref('users/'+data.key);
         password = sjcl.encrypt('password', password);
-        newUser.child('mobile').set(mobile);
-        newUser.child('password').set(password);
-        newUser.child('username').set(username);
-        var uid = data.key;
         var profilePic = storage.ref("profile-pics/defaultProfilePic.png");
         profilePic.getDownloadURL().then(function(url) {
-          db.ref('users/'+uid).child('profilePic').set(url);
+          newUser.child('username').set(username);
+          newUser.child('mobile').set(mobile);
+          newUser.child('profilePic').set(url);
+          newUser.child('password').set(password);
           window.location.href = "index.html";
         });
       });
