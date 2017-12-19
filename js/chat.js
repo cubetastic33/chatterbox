@@ -223,7 +223,7 @@ function sendMessage(message) {
 }
 
 function addImageToChat() {
-  var uid = firebase.auth().currentUser.uid;
+  var uid = localStorage.getItem('currentUser');
   $("#addImage").empty();
   $("#addImage").show();
   $("#addImage").append('\
