@@ -41,7 +41,7 @@ function signUpUser(e) {
       $('#password').attr('class', 'validate');
       db.ref('users').push().on('value', function(data) {
         var newUser = db.ref('users/'+data.key);
-        password = sjcl.encrypt('password', password);
+        //password = sjcl.encrypt('password', password);
         var profilePic = storage.ref("profile-pics/defaultProfilePic.png");
         profilePic.getDownloadURL().then(function(url) {
           newUser.child('username').set(username);
@@ -65,7 +65,7 @@ function signInUser(e) {
   Materialize.toast('Please wait...', 10000);
   var usersRef = db.ref('users').orderByChild('username').equalTo(username);
   usersRef.once('child_added', function(snapshot) {
-    var reqPassword = sjcl.decrypt('password', snapshot.child('password').val());
+    var reqPassword = snapshot.child('password').val();
     if (password === reqPassword) {
       localStorage.setItem('currentUser', snapshot.key);
       window.location.href = "index.html";
