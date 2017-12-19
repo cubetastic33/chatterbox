@@ -90,9 +90,9 @@ if ($('#header').length) {
       $("#profilePicAtProfile").attr("src", data.val());
       $("#profilePicAtProfile").click(function() {$("#newProfilePic").click();});
       $("#newProfilePic").on("change", function(e) {
-        console.log("Chose new file");
         var newProfilePic = e.target.files[0];
-        storage.ref("profile-pics/"+uid+"/"+newProfilePic.name).put(newProfilePic).then(function() {
+        storage.ref('profile-pics/'+uid+'/'+newProfilePic.name).put(newProfilePic).then(function() {
+          console.log("Chose new file");
           var imageRef = storage.ref("profile-pics/"+uid+"/"+newProfilePic.name);
           imageRef.getDownloadURL().then(function(url) {
             existingProfilePic.set(url);
