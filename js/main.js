@@ -82,7 +82,7 @@ function signOutUser() {
 
 if ($('#header').length) {
   //User is in the profile page
-  if (localStorage.getItem('currentUser').length > 5) {
+  if (localStorage.getItem('currentUser').length) {
     var uid = localStorage.getItem('currentUser');
     var existingProfilePic = db.ref("users/"+uid).child("profilePic");
     existingProfilePic.on("value", function(data) {

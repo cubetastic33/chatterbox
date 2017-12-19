@@ -1,5 +1,5 @@
 hideloader();
-if (localStorage.getItem('currentUser').length > 5) {
+if (localStorage.getItem('currentUser').length) {
   // User is signed in.
   var uid = localStorage.getItem('currentUser');
   var username;

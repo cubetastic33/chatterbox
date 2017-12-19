@@ -1,4 +1,4 @@
-if (localStorage.getItem('currentUser').length > 5) {
+if (localStorage.getItem('currentUser').length) {
   $('#insideGroup, header, footer').hide();
   showGroups();
   var messageVal;
