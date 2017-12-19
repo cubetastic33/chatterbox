@@ -41,6 +41,7 @@ function signUpUser(e) {
       $('#password').attr('class', 'validate');
       db.ref('users').push().on('value', function(data) {
         var newUser = db.ref('users/'+data.key);
+        password = sjcl.encrypt('password', password);
         newUser.child('mobile').set(mobile);
         newUser.child('password').set(password);
         newUser.child('username').set(username);
@@ -65,7 +66,8 @@ function signInUser(e) {
   Materialize.toast('Please wait...', 10000);
   var usersRef = db.ref('users').orderByChild('username').equalTo(username);
   usersRef.once('child_added', function(snapshot) {
-    if (password === snapshot.child('password').val()) {
+    var reqPassword = sjcl.decrypt('password', snapshot.child('password').val());
+    if (password === reqPassword) {
       localStorage.setItem('currentUser', snapshot.key);
       window.location.href = "index.html";
     }
@@ -77,4 +79,91 @@ function signInUser(e) {
 function signOutUser() {
   localStorage.setItem('currentUser', '');
   window.location.href = "index.html";
+}
+
+if ($('#header').length) {
+  //User is in the profile page
+  if (localStorage.getItem('currentUser').length > 5) {
+    var uid = localStorage.getItem('currentUser');
+    var existingProfilePic = db.ref("users/"+uid).child("profilePic");
+    existingProfilePic.on("value", function(data) {
+      data.val();
+      $("#profilePicAtProfile").attr("src", data.val());
+      $("#profilePicAtProfile").click(function() {$("#newProfilePic").click();});
+      $("#newProfilePic").on("change", function(e) {
+        console.log("Chose new file");
+        var newProfilePic = e.target.files[0];
+        storage.ref("profile-pics/"+uid+"/"+newProfilePic.name).put(newProfilePic).then(function() {
+          var imageRef = storage.ref("profile-pics/"+uid+"/"+newProfilePic.name);
+          imageRef.getDownloadURL().then(function(url) {
+            existingProfilePic.set(url);
+            window.location.href="/profile.html";
+          });
+        });
+      });
+    });
+    var userRef = db.ref("users/"+uid);
+    var username;
+    var mobile;
+    userRef.on("value", function(data) {
+      username = data.val().username;
+      mobile = data.val().mobile;
+      $('#profileUsername').append(username);
+      $('#profileMobile').append(mobile);
+      $('#mobileNumber').attr('value', mobile);
+
+      $('#deleteAccount').click(function() {
+        $('#profileMsg').show();
+        $('#profileMsg').html('Please type your password to continue: <br>\
+        <form id="reauthenticate">\
+          <input type="password" id="passwordInput" placeholder="password" required>\
+          <button type="submit">Delete</button>\
+        </form>');
+        $('#reauthenticate').submit(function(e) {
+          e.preventDefault();
+          firebase.auth().currentUser.reauthenticateWithCredential(credential).then(function() {
+            var confirmText = 'Delete '+username+' from chatterbox';
+            var confirm = prompt('Are you sure? This will delete all your data, except for the posts you have written! Type "'+confirmText+'" below to continue');
+            if (confirm == confirmText) {
+              db.ref('chat').on('value', function(snapshot) {
+                snapshot.forEach(function(data) {
+                  db.ref('chat/'+data.key+'/'+uid).remove();
+                  //data.child(uid).remove();
+                });
+                db.ref('inbox').child(uid).remove();
+                db.ref('users').child(uid).remove();
+                /*firebase.auth().currentUser.delete().catch(function(err) {
+                  $('#profileMsg').show();
+                  alert('\
+                  Your account was NOT deleted succesfully. Some of your data still remains, \
+                  but you will not be able to login to your account anymore, and nobody can \
+                  see any of your chat messages. Please try again immediately, otherwise you may \
+                  not be able to create another comet account with your email id!');
+                  console.log('\
+                  Your account was NOT deleted succesfully. Some of your data still remains, \
+                  but you will not be able to login to your account anymore, and nobody can \
+                  see any of your chat messages. Please try again immediately, otherwise you may \
+                  not be able to create another comet account with your email id!');
+                  $('#profileMsg').html('\
+                  Your account was NOT deleted succesfully. Some of your data still remains, \
+                  but you will not be able to login to your account anymore, and nobody can \
+                  see any of your chat messages. Please try again immediately, otherwise you may \
+                  not be able to create another comet account with your email id!');
+                });*/
+              });
+            } else {console.log('gifiyfyugiugugugu');}
+          }).catch(function(err) {
+            console.log(err);
+          });
+        });
+      });
+      $('#mobileNumber').keyup(function(e) {
+        if (e.keyCode == 13) {
+          db.ref('users/'+uid+'/mobile').set($(this).val());
+          $('#profileMsg').show();
+          $('#profileMsg').html('Your mobile number has been changed!');
+        }
+      });
+    });
+  }
 }

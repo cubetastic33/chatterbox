@@ -58,3 +58,7 @@ input:-webkit-autofill:active {
   margin-top: -20px;
   padding-top: 10px;
 }
+
+#profilePicAtProfile {
+  width: 20vw;
+}
