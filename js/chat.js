@@ -211,15 +211,11 @@ function sendMessage(message) {
   var group = $("#groupHeading").text();
   var time = dt.getUTCHours()+":"+dt.getUTCMinutes()+":"+dt.getUTCSeconds();
   var date = dt.getUTCDate()+"."+(dt.getUTCMonth() + 1)+"."+dt.getUTCFullYear();
-  if ((message.indexOf('xmp') > -1) && (message.indexOf('>') > -1)) {
-    alert("Your message contains text that is not permitted. Please see and remove stuff like xmp tags or something like that.");
-  } else {
-    var usersChatRef = db.ref("chat/"+group).push();
-    usersChatRef.child("message").set(message);
-    usersChatRef.child("time").set(time);
-    usersChatRef.child("date").set(date);
-    usersChatRef.child("uid").set(uid);
-  }
+  var usersChatRef = db.ref("chat/"+group).push();
+  usersChatRef.child("message").set(message);
+  usersChatRef.child("time").set(time);
+  usersChatRef.child("date").set(date);
+  usersChatRef.child("uid").set(uid);
 }
 
 function addImageToChat() {
